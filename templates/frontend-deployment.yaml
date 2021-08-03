@@ -1,0 +1,27 @@
+{{- if .Values.frontend.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "apps-helm.fullname" . }}-frontend
+  labels:
+    app: {{ include "apps-helm.name" . }}-frontend
+spec:
+  selector:
+    matchLabels:
+      app: {{ include "apps-helm.name" . }}-frontend
+  template:
+    metadata:
+      labels:
+        app: {{ include "apps-helm.name" . }}-frontend
+    spec:
+      imagePullSecrets:
+{{ toYaml .Values.image.secrets | indent 10 }}
+      containers:
+      - name: {{ .Chart.Name }}-frontend
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 12 }}
+        image: "{{ .Values.image.frontend.repository }}:{{ .Values.image.frontend.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.frontend.pullPolicy }}
+        ports:
+        - containerPort: 8080
+{{- end -}}

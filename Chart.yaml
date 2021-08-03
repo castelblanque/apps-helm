@@ -1,0 +1,10 @@
+apiVersion: v2
+name: apps-helm
+description: Backend and Frontend applications chart
+type: application
+version: 0.1.9
+appVersion: "1.18"
+dependencies:
+- name: nginx-ingress
+  version: "0.10.0"
+  repository: "https://helm.nginx.com/stable"
