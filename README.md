@@ -11,8 +11,10 @@ Steps to install:
     helm install apps-helm ./
     ```
 
-3. Once installed by Helm, get the IP of the load balancer and add a record in the local hosts file pointing to `apps-example.local`
+3. Once installed by Helm, get the IP of the load balancer with
 
     `kubectl get ingress apps-helm --output jsonpath='{.status.loadBalancer.ingress[0].ip}'`
 
-4. Browse the [home page](http://apps-example.local/)
+4. Add a record in the local hosts file pointing the obtained IP to `apps-example.local`
+
+5. Browse to the [home page](http://apps-example.local/)
