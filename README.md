@@ -18,9 +18,7 @@ Projects deployed:
 
 1. Get a running Kubernetes cluster (e.g. minikube or any cloud provider). Make sure access is correctly setup.
 
-2. Checkout this project
-
-    ``
+2. Checkout/clone this project
 
 3. Install app with Helm
 
